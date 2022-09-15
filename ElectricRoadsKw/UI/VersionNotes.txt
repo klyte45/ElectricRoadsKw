@@ -1,0 +1,3 @@
+<color=yellow>v3.0.0 - 16/SEP/22</color>
+- Plaza & Promenades update
+- New UI and new implementation
