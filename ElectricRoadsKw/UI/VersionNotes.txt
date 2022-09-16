@@ -4,3 +4,5 @@
 - <color=#ff8800>Removed support to 81 tiles mod (while it's not fixed)</color>
 
 <color=yellow>NOTICE: This mod is incompatible with the "81 Tiles 2" mod</color>
+
+<color=green>r1 - 16/SEP/22</color>: Updated ja i18n.

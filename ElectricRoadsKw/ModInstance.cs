@@ -9,7 +9,7 @@ using System.Reflection;
 using UnifiedUI.Helpers;
 using UnityEngine;
 
-[assembly: AssemblyVersion("3.0.0.0")]
+[assembly: AssemblyVersion("3.0.0.1")]
 namespace ElectricRoads
 {
     public class ModInstance : BasicIUserMod<ModInstance, MainController>
