@@ -155,25 +155,7 @@ namespace Klyte.Localization {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a &lt;color=#ffff00&gt;{0}&lt;/color&gt;.
-        /// </summary>
-        internal static string ER_PATTERN_NET_LIST_CONTENT {
-            get {
-                return ResourceManager.GetString("ER_PATTERN_NET_LIST_CONTENT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a &lt;color=#888888&gt;(...and others {1} assets)&lt;/color&gt;.
-        /// </summary>
-        internal static string ER_PATTERN_NET_LIST_FOOTER_MORE {
-            get {
-                return ResourceManager.GetString("ER_PATTERN_NET_LIST_FOOTER_MORE", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a This is the list of assets in this class:.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a This is the list of assets in this class: (Showing {0}/{1}).
         /// </summary>
         internal static string ER_PATTERN_NET_LIST_TITLE {
             get {

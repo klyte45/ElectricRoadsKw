@@ -83,6 +83,7 @@
     <Compile Include="ModInstance.cs" />
     <Compile Include="Overrides\ElectricRoadsOverrides.cs" />
     <Compile Include="Data\**\*.cs" />
+    <Compile Include="UI\LiteUI\MainWindow.cs" />
     <Compile Include="_commons\**\*.cs" Exclude="_commons\Localization\KStr.Designer.cs" />
     <Compile Include="_commons\Localization\KStr.Designer.cs">
       <DependentUpon>KStr.resx</DependentUpon>
@@ -106,6 +107,13 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="UI\Images\ModIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UI\Images\Load.png" />
+    <EmbeddedResource Include="UI\Images\None.png" />
+    <EmbeddedResource Include="UI\Images\All.png" />
+    <EmbeddedResource Include="UI\Images\Reload.png" />
+    <EmbeddedResource Include="UI\Images\Save.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

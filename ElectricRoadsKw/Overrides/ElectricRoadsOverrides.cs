@@ -24,8 +24,8 @@ namespace ElectricRoads.Overrides
         private static readonly MethodInfo origMethodColorNode = typeof(PowerLineAI).GetMethod("GetColor", new Type[] { typeof(ushort), typeof(NetNode).MakeByRefType(), typeof(InfoManager.InfoMode) });
         private static readonly MethodInfo origMethodColorSegment = typeof(PowerLineAI).GetMethod("GetColor", new Type[] { typeof(ushort), typeof(NetSegment).MakeByRefType(), typeof(InfoManager.InfoMode) });
 
-        private static readonly MethodInfo origMethodColorNodeRoadBase = typeof(PlayerNetAI).GetMethod("GetColor", new Type[] { typeof(ushort), typeof(NetNode).MakeByRefType(), typeof(InfoManager.InfoMode) });
-        private static readonly MethodInfo origMethodColorSegmentRoadBase = typeof(PlayerNetAI).GetMethod("GetColor", new Type[] { typeof(ushort), typeof(NetSegment).MakeByRefType(), typeof(InfoManager.InfoMode) });
+        private static readonly MethodInfo origMethodColorNodeRoadBase = typeof(NetAI).GetMethod("GetColor", new Type[] { typeof(ushort), typeof(NetNode).MakeByRefType(), typeof(InfoManager.InfoMode) });
+        private static readonly MethodInfo origMethodColorSegmentRoadBase = typeof(NetAI).GetMethod("GetColor", new Type[] { typeof(ushort), typeof(NetSegment).MakeByRefType(), typeof(InfoManager.InfoMode) });
 
         private static readonly GetColorNodePLAIDelegate GetColorNodePLAI = (GetColorNodePLAIDelegate)ReflectionUtils.GetMethodDelegate(origMethodColorNode, typeof(GetColorNodePLAIDelegate));
         private static readonly GetColorSegmentPLAIDelegate GetColorSegmentPLAI = (GetColorSegmentPLAIDelegate)ReflectionUtils.GetMethodDelegate(origMethodColorSegment, typeof(GetColorSegmentPLAIDelegate));
@@ -47,7 +47,7 @@ namespace ElectricRoads.Overrides
 
         private static string GetStringDebugCheck81Assembly(Assembly x) => (x.GetType("EightyOne.ResourceManagers.FakeElectricityManager") != null ? $"#{x.GetName().Name}#" : x.GetName().Name);
 
-        public void Start()
+        public void Awake()
         {
             if (GenerateAssembliesDebugString().IsNullOrWhiteSpace())
             {
@@ -91,21 +91,21 @@ namespace ElectricRoads.Overrides
             GetHarmonyInstance();
             ModInstance.m_currentPatched |= ModInstance.PatchFlags.RegularGame;
 
-            List<Type> targetTypes = ElectricRoadsOverrides.Get81TilesFakeManagerTypes();
+            //List<Type> targetTypes = ElectricRoadsOverrides.Get81TilesFakeManagerTypes();
 
-            foreach (Type fakeElMan in targetTypes)
-            {
-                src = fakeElMan.GetMethod("SimulationStepImpl", RedirectorUtils.allFlags);
-                src2 = fakeElMan.GetMethod("ConductToNode", RedirectorUtils.allFlags);
-                src4 = fakeElMan.GetMethod("UpdateNodeElectricity", RedirectorUtils.allFlags);
-                LogUtils.DoLog($"TRANSPILE Electric ROADS NODES: {src} => {trp}");
-                AddRedirect(src, null, null, trp);
-                LogUtils.DoLog($"TRANSPILE Electric ROADS SEGMENTS: {src2} => {trp2}");
-                AddRedirect(src2, null, null, trp2);
-                LogUtils.DoLog($"TRANSPILE Electric ROADS SEGMENTS CHANGED: {src4} => {pre4} & {pos4}");
-                AddRedirect(src4, pre4, pos4);
-                ModInstance.m_currentPatched |= ModInstance.PatchFlags.Mod81TilesGame;
-            }
+            //foreach (Type fakeElMan in targetTypes)
+            //{
+            //    src = fakeElMan.GetMethod("SimulationStepImpl", RedirectorUtils.allFlags);
+            //    src2 = fakeElMan.GetMethod("ConductToNode", RedirectorUtils.allFlags);
+            //    src4 = fakeElMan.GetMethod("UpdateNodeElectricity", RedirectorUtils.allFlags);
+            //    LogUtils.DoLog($"TRANSPILE Electric ROADS NODES: {src} => {trp}");
+            //    AddRedirect(src, null, null, trp);
+            //    LogUtils.DoLog($"TRANSPILE Electric ROADS SEGMENTS: {src2} => {trp2}");
+            //    AddRedirect(src2, null, null, trp2);
+            //    LogUtils.DoLog($"TRANSPILE Electric ROADS SEGMENTS CHANGED: {src4} => {pre4} & {pos4}");
+            //    AddRedirect(src4, pre4, pos4);
+            //    ModInstance.m_currentPatched |= ModInstance.PatchFlags.Mod81TilesGame;
+            //}
             GetHarmonyInstance();
 
 
@@ -200,6 +200,8 @@ namespace ElectricRoads.Overrides
         {
             bool transpiled = false;
             var instrList = instr.ToList();
+            LogUtils.DoLog("Method Src:");
+            LogUtils.PrintMethodIL(instrList);
             for (int i = 2; i < instrList.Count - 2; i++)
             {
 

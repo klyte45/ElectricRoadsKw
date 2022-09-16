@@ -133,10 +133,7 @@
     <value>Assets of class: {0}</value>
   </data>
   <data name="ER_PATTERN_NET_LIST_TITLE" xml:space="preserve">
-    <value>This is the list of assets in this class:</value>
-  </data>
-  <data name="ER_PATTERN_NET_LIST_CONTENT" xml:space="preserve">
-    <value>&lt;color=#ffff00&gt;{0}&lt;/color&gt;</value>
+    <value>This is the list of assets in this class: (Showing {0}/{1})</value>
   </data>
   <data name="ER_EXPORT_DEFAULT_BTN" xml:space="preserve">
     <value>Export as Default</value>
@@ -171,9 +168,6 @@ If you think this is a mod problem, please take a print of this window and post 
   </data>
   <data name="ER_GO_TO_MOD_PAGE_BUTTON" xml:space="preserve">
     <value>Go to mod page at Workshop</value>
-  </data>
-  <data name="ER_PATTERN_NET_LIST_FOOTER_MORE" xml:space="preserve">
-    <value>&lt;color=#888888&gt;(...and others {1} assets)&lt;/color&gt;</value>
   </data>
   <data name="ER_COPY_TO_CLIPBOARD" xml:space="preserve">
     <value>Copy content to Clipboard</value>

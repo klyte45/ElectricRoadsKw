@@ -117,5 +117,61 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
- 
+  <data name="ER_ACTIVATE_CLASS_BTN" xml:space="preserve">
+    <value>送電を有効化</value>
+  </data>
+  <data name="ER_DEACTIVATE_CLASS_BTN" xml:space="preserve">
+    <value>送電を無効化</value>
+  </data>
+  <data name="ER_ERROR_LOADING_DEFAULTS_MESSAGE" xml:space="preserve">
+    <value>デフォルト設定のファイル( &lt;color=#FFFF00&gt;{0}&lt;/color&gt;) が破損しています。読み込み時にエラーが発生しました。
+
+&lt;color=#FF0000&gt;{1} - {2}
+
+{3}&lt;/color&gt;
+
+もしMODに問題があれば、エラー情報をコピーしてSteamのワークショップへ投稿してください。</value>
+  </data>
+  <data name="ER_ERROR_LOADING_DEFAULTS_TITLE" xml:space="preserve">
+    <value>デフォルト設定の読み込みエラー</value>
+  </data>
+  <data name="ER_GO_TO_MOD_PAGE_BUTTON" xml:space="preserve">
+    <value>ワークショップの紹介ページへ移動</value>
+  </data>
+  <data name="ER_GO_TO_THE_GUIDE" xml:space="preserve">
+    <value>ガイドのページへ
+(ログの検索方法)</value>
+  </data>
+  <data name="ER_OK_BUTTON" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ER_OPEN_FOLDER_ON_EXPLORER_BUTTON" xml:space="preserve">
+    <value>エクスプローラでフォルダを開く</value>
+  </data>
+  <data name="ER_PATTERN_NET_LIST_FEW" xml:space="preserve">
+    <value>この区分のアセット一覧:
+
+&lt;color=#ffff00&gt;{0}&lt;/color&gt;</value>
+  </data>
+  <data name="ER_PATTERN_NET_LIST_FULL" xml:space="preserve">
+    <value>この区分のアセット一覧:
+
+&lt;color=#ffff00&gt;{0}&lt;/color&gt;
+\t&lt;color=#888888&gt;(...更に {1} 個のアセット)&lt;/color&gt;</value>
+  </data>
+  <data name="ER_RESET_BTN" xml:space="preserve">
+    <value>デフォルトを使用</value>
+  </data>
+  <data name="ER_RETURN_BTN" xml:space="preserve">
+    <value>何もしない</value>
+  </data>
+  <data name="ER_SELECT_ALL_BTN" xml:space="preserve">
+    <value>全て選択</value>
+  </data>
+  <data name="ER_SELECT_NONE_BTN" xml:space="preserve">
+    <value>選択しない</value>
+  </data>
+  <data name="ER_TITLE_NET_LIST_WINDOW" xml:space="preserve">
+    <value>アセットの区分: {0}</value>
+  </data>
 </root>
