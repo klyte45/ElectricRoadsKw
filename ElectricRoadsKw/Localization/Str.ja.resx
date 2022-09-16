@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -117,11 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="root_modDescription" xml:space="preserve">
+    <value>ネットワーク経由の送電を有効化/無効化にします。</value>
+  </data>
   <data name="ER_ACTIVATE_CLASS_BTN" xml:space="preserve">
     <value>送電を有効化</value>
   </data>
   <data name="ER_DEACTIVATE_CLASS_BTN" xml:space="preserve">
     <value>送電を無効化</value>
+  </data>
+  <data name="ER_RETURN_BTN" xml:space="preserve">
+    <value>何もしない</value>
+  </data>
+  <data name="ER_TITLE_NET_LIST_WINDOW" xml:space="preserve">
+    <value>アセットの区分: {0}</value>
+  </data>
+  <data name="ER_PATTERN_NET_LIST_TITLE" xml:space="preserve">
+    <value>これらは、このクラスのアセットのリストです: ( {0}/{1} を表示)</value>
+  </data>
+  <data name="ER_EXPORT_DEFAULT_BTN" xml:space="preserve">
+    <value>デフォルトとしてエクスポート</value>
+  </data>
+  <data name="ER_IMPORT_DEFAULT_BTN" xml:space="preserve">
+    <value>デフォルトをインポート</value>
+  </data>
+  <data name="ER_SELECT_ALL_BTN" xml:space="preserve">
+    <value>全て選択</value>
+  </data>
+  <data name="ER_SELECT_NONE_BTN" xml:space="preserve">
+    <value>選択しない</value>
+  </data>
+  <data name="ER_RESET_BTN" xml:space="preserve">
+    <value>デフォルトを使用</value>
+  </data>
+  <data name="ER_ERROR_LOADING_DEFAULTS_TITLE" xml:space="preserve">
+    <value>デフォルト設定の読み込みエラー</value>
   </data>
   <data name="ER_ERROR_LOADING_DEFAULTS_MESSAGE" xml:space="preserve">
     <value>デフォルト設定のファイル( &lt;color=#FFFF00&gt;{0}&lt;/color&gt;) が破損しています。読み込み時にエラーが発生しました。
@@ -132,46 +162,16 @@
 
 もしMODに問題があれば、エラー情報をコピーしてSteamのワークショップへ投稿してください。</value>
   </data>
-  <data name="ER_ERROR_LOADING_DEFAULTS_TITLE" xml:space="preserve">
-    <value>デフォルト設定の読み込みエラー</value>
-  </data>
-  <data name="ER_GO_TO_MOD_PAGE_BUTTON" xml:space="preserve">
-    <value>ワークショップの紹介ページへ移動</value>
-  </data>
-  <data name="ER_GO_TO_THE_GUIDE" xml:space="preserve">
-    <value>ガイドのページへ
-(ログの検索方法)</value>
-  </data>
   <data name="ER_OK_BUTTON" xml:space="preserve">
     <value>OK</value>
   </data>
   <data name="ER_OPEN_FOLDER_ON_EXPLORER_BUTTON" xml:space="preserve">
     <value>エクスプローラでフォルダを開く</value>
   </data>
-  <data name="ER_PATTERN_NET_LIST_FEW" xml:space="preserve">
-    <value>この区分のアセット一覧:
-
-&lt;color=#ffff00&gt;{0}&lt;/color&gt;</value>
+  <data name="ER_GO_TO_MOD_PAGE_BUTTON" xml:space="preserve">
+    <value>ワークショップの紹介ページへ移動</value>
   </data>
-  <data name="ER_PATTERN_NET_LIST_FULL" xml:space="preserve">
-    <value>この区分のアセット一覧:
-
-&lt;color=#ffff00&gt;{0}&lt;/color&gt;
-\t&lt;color=#888888&gt;(...更に {1} 個のアセット)&lt;/color&gt;</value>
-  </data>
-  <data name="ER_RESET_BTN" xml:space="preserve">
-    <value>デフォルトを使用</value>
-  </data>
-  <data name="ER_RETURN_BTN" xml:space="preserve">
-    <value>何もしない</value>
-  </data>
-  <data name="ER_SELECT_ALL_BTN" xml:space="preserve">
-    <value>全て選択</value>
-  </data>
-  <data name="ER_SELECT_NONE_BTN" xml:space="preserve">
-    <value>選択しない</value>
-  </data>
-  <data name="ER_TITLE_NET_LIST_WINDOW" xml:space="preserve">
-    <value>アセットの区分: {0}</value>
+  <data name="ER_COPY_TO_CLIPBOARD" xml:space="preserve">
+    <value>クリップボードに内容をコピー</value>
   </data>
 </root>

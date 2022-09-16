@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -117,14 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="root_modDescription" xml:space="preserve">
+    <value>Ativar/desativar eletricidade através das redes.</value>
+  </data>
   <data name="ER_ACTIVATE_CLASS_BTN" xml:space="preserve">
     <value>Ativar Eletricidade</value>
   </data>
-  <data name="ER_COPY_TO_CLIPBOARD" xml:space="preserve">
-    <value>Copiar conteúdo para Área Transf.</value>
-  </data>
   <data name="ER_DEACTIVATE_CLASS_BTN" xml:space="preserve">
     <value>Desativar Eletricidade</value>
+  </data>
+  <data name="ER_RETURN_BTN" xml:space="preserve">
+    <value>Não modificar</value>
+  </data>
+  <data name="ER_TITLE_NET_LIST_WINDOW" xml:space="preserve">
+    <value>Ativos da classe: {0}</value>
+  </data>
+  <data name="ER_PATTERN_NET_LIST_TITLE" xml:space="preserve">
+    <value>Esta é lista de ativos pertencentes a esta classe: (Mostrando {0}/{1})</value>
+  </data>
+  <data name="ER_EXPORT_DEFAULT_BTN" xml:space="preserve">
+    <value>Exportar como padrão</value>
+  </data>
+  <data name="ER_IMPORT_DEFAULT_BTN" xml:space="preserve">
+    <value>Importar do arquivo padrão</value>
+  </data>
+  <data name="ER_SELECT_ALL_BTN" xml:space="preserve">
+    <value>Selecionar tudo</value>
+  </data>
+  <data name="ER_SELECT_NONE_BTN" xml:space="preserve">
+    <value>Selecionar nenhum</value>
+  </data>
+  <data name="ER_RESET_BTN" xml:space="preserve">
+    <value>Usar padrão do mod</value>
+  </data>
+  <data name="ER_ERROR_LOADING_DEFAULTS_TITLE" xml:space="preserve">
+    <value>Erro carregando arquivos padrão</value>
   </data>
   <data name="ER_ERROR_LOADING_DEFAULTS_MESSAGE" xml:space="preserve">
     <value>O arquivo de configurações (no caminho &lt;color=#FFFF00&gt;{0}&lt;/color&gt;) parece estar corrompido. Este erro foi lançado ao tentar lê-lo:
@@ -135,44 +162,16 @@
 
 Se achar que este é um defeito no Mod, favor printar essa tela e postar um comentário contendo ela na página do item na Workshop.</value>
   </data>
-  <data name="ER_ERROR_LOADING_DEFAULTS_TITLE" xml:space="preserve">
-    <value>Erro carregando arquivos padrão</value>
-  </data>
-  <data name="ER_EXPORT_DEFAULT_BTN" xml:space="preserve">
-    <value>Exportar como padrão</value>
-  </data>
-  <data name="ER_GO_TO_MOD_PAGE_BUTTON" xml:space="preserve">
-    <value>Ir à página na Workshop</value>
-  </data>
-  <data name="ER_GO_TO_THE_GUIDE" xml:space="preserve">
-    <value>Ir ao guia
-(como encontrar o log)</value>
-  </data>
-  <data name="ER_IMPORT_DEFAULT_BTN" xml:space="preserve">
-    <value>Importar do arquivo padrão</value>
-  </data>
   <data name="ER_OK_BUTTON" xml:space="preserve">
-    <value>Okay...</value>
+    <value>OK...</value>
   </data>
   <data name="ER_OPEN_FOLDER_ON_EXPLORER_BUTTON" xml:space="preserve">
     <value>Abrir pasta de arquivos</value>
   </data>
-  <data name="ER_PATTERN_NET_LIST_TITLE" xml:space="preserve">
-    <value>Esta é lista de assets pertencentes a esta classe: (Mostrando {0}/{1})</value>
+  <data name="ER_GO_TO_MOD_PAGE_BUTTON" xml:space="preserve">
+    <value>Ir à página na Workshop</value>
   </data>
-  <data name="ER_RESET_BTN" xml:space="preserve">
-    <value>Usar padrão do mod</value>
-  </data>
-  <data name="ER_RETURN_BTN" xml:space="preserve">
-    <value>Não modificar</value>
-  </data>
-  <data name="ER_SELECT_ALL_BTN" xml:space="preserve">
-    <value>Selecionar tudo</value>
-  </data>
-  <data name="ER_SELECT_NONE_BTN" xml:space="preserve">
-    <value>Selecionar nenhum</value>
-  </data>
-  <data name="ER_TITLE_NET_LIST_WINDOW" xml:space="preserve">
-    <value>Assets da classe: {0}</value>
+  <data name="ER_COPY_TO_CLIPBOARD" xml:space="preserve">
+    <value>Copiar conteúdo para Área Transf.</value>
   </data>
 </root>

@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -117,5 +117,59 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
- 
+  <data name="root_modDescription" xml:space="preserve">
+    <value>Enable/disable electricity passing through networks.</value>
+  </data>
+  <data name="ER_ACTIVATE_CLASS_BTN" xml:space="preserve">
+    <value>Activate Electricity</value>
+  </data>
+  <data name="ER_DEACTIVATE_CLASS_BTN" xml:space="preserve">
+    <value>Deactivate Electricity</value>
+  </data>
+  <data name="ER_RETURN_BTN" xml:space="preserve">
+    <value>Do nothing</value>
+  </data>
+  <data name="ER_TITLE_NET_LIST_WINDOW" xml:space="preserve">
+    <value>Assets of class: {0}</value>
+  </data>
+  <data name="ER_PATTERN_NET_LIST_TITLE" xml:space="preserve">
+    <value>This is the list of assets in this class: (Showing {0}/{1})</value>
+  </data>
+  <data name="ER_EXPORT_DEFAULT_BTN" xml:space="preserve">
+    <value>Export as Default</value>
+  </data>
+  <data name="ER_IMPORT_DEFAULT_BTN" xml:space="preserve">
+    <value>Import Defaults</value>
+  </data>
+  <data name="ER_SELECT_ALL_BTN" xml:space="preserve">
+    <value>Select All</value>
+  </data>
+  <data name="ER_SELECT_NONE_BTN" xml:space="preserve">
+    <value>Select None</value>
+  </data>
+  <data name="ER_RESET_BTN" xml:space="preserve">
+    <value>Use mod defaults</value>
+  </data>
+  <data name="ER_ERROR_LOADING_DEFAULTS_TITLE" xml:space="preserve">
+    <value>Error loading defaults</value>
+  </data>
+  <data name="ER_ERROR_LOADING_DEFAULTS_MESSAGE" xml:space="preserve">
+    <value>The file with default configurations (at &lt;color=#FFFF00&gt;{0}&lt;/color&gt;) seems to be corrupted. This error was thrown while trying to load it:
+
+&lt;color=#FF0000&gt;{1} - {2}\n\n{3}&lt;/color&gt;
+
+If you think this is a mod problem, please take a print of this window and post it at mod page.</value>
+  </data>
+  <data name="ER_OK_BUTTON" xml:space="preserve">
+    <value>Okay...</value>
+  </data>
+  <data name="ER_OPEN_FOLDER_ON_EXPLORER_BUTTON" xml:space="preserve">
+    <value>Open folder in explorer</value>
+  </data>
+  <data name="ER_GO_TO_MOD_PAGE_BUTTON" xml:space="preserve">
+    <value>Go to mod page at Workshop</value>
+  </data>
+  <data name="ER_COPY_TO_CLIPBOARD" xml:space="preserve">
+    <value>Copy content to Clipboard</value>
+  </data>
 </root>
