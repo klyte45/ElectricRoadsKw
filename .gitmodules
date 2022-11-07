@@ -1,3 +1,3 @@
-[submodule "ElectricRoadsKw/_commons"]
-	path = ElectricRoadsKw/_commons
-	url = https://github.com/klyte45/KwyttoUtility
+[submodule "KwyttoUtilityER/Kwytto"]
+	path = KwyttoUtilityER/Kwytto
+	url = https://github.com/klyte45/KwyttoUtility.git
