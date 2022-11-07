@@ -1,6 +1,6 @@
 ﻿using ColossalFramework;
 using ICities;
-using Klyte.Localization;
+using ElectricRoads.Localization;
 using Kwytto.LiteUI;
 using Kwytto.Utils;
 using System;

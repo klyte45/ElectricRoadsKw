@@ -67,7 +67,7 @@ namespace ElectricRoads.Overrides
             AddRedirect(typeof(PropInstance).GetMethod("RenderInstance", RedirectorUtils.allFlags, null, new Type[] { typeof(RenderManager.CameraInfo), typeof(PropInfo), typeof(InstanceID), typeof(Vector3), typeof(float), typeof(float), typeof(Color), typeof(Vector4), typeof(bool) }, null), null, null, GetType().GetMethod("LightsOnCheckDetour", RedirectorUtils.allFlags));
             AddRedirect(typeof(LightEffect).GetMethod("PopulateGroupData", RedirectorUtils.allFlags), GetType().GetMethod("CheckElectrityNetForLight", RedirectorUtils.allFlags));
 
-            ModInstance.m_currentPatched &= ~ModInstance.PatchFlags.Mod81TilesGame;
+            ModInstance.m_currentPatched &= ~ModInstance.PatchFlags.BP81TilesGame;
             ModInstance.m_currentPatched &= ~ModInstance.PatchFlags.RegularGame;
 
 

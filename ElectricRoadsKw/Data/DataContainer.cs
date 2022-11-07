@@ -1,8 +1,7 @@
 ﻿using ColossalFramework;
 using ColossalFramework.Threading;
 using ICities;
-using Klyte.Localization;
-using Kwytto;
+using ElectricRoads.Localization;
 using Kwytto.LiteUI;
 using Kwytto.Utils;
 using System;
@@ -29,7 +28,7 @@ namespace ElectricRoads.Data
         {
             LogUtils.DoLog($"LOADING DATA {GetType()}");
             instance.Instances = new Dictionary<Type, IDataExtension>();
-            List<Type> instancesExt = ReflectionUtils.GetInterfaceImplementations(typeof(IDataExtension), GetType());
+            List<Type> instancesExt = ReflectionUtils.GetInterfaceImplementations(typeof(IDataExtension), new[] { GetType().Assembly });
             LogUtils.DoLog($"SUBTYPE COUNT: {instancesExt.Count}");
             foreach (Type type in instancesExt)
             {
@@ -89,7 +88,7 @@ namespace ElectricRoads.Data
                 try
                 {
                     instance.Instances[type] = basicInstance.Deserialize(type, storage) ?? basicInstance;
-                    if (CommonProperties.DebugMode)
+                    if (ModInstance.DebugMode)
                     {
                         string content = System.Text.Encoding.UTF8.GetString(storage);
                         LogUtils.DoLog($"{type} DATA {storage.Length}b => {content}");
@@ -113,7 +112,7 @@ namespace ElectricRoads.Data
                     KwyttoDialog.ShowModal(new KwyttoDialog.BindProperties()
                     {
                         title = $"Error loading '{type}' data",
-                        message = $"An error occurred while loading the data from <color yellow>{CommonProperties.ModName}</color>.{(CommonProperties.GitHubRepoPath.IsNullOrWhiteSpace() ? "" : "\nPlease open a issue in GitHub along with the game log attached and a printscreen of this window to get this checked by the mod developer. See the <color cyan>Report-a-bug Helper</color> button in the mod options menu to see details about how to get the game log.")}\nRaw data:",
+                        message = $"An error occurred while loading the data from <color yellow>{ModInstance.Instance.SimpleName}</color>.{(ModInstance.Instance.GitHubRepoPath.IsNullOrWhiteSpace() ? "" : "\nPlease open a issue in GitHub along with the game log attached and a printscreen of this window to get this checked by the mod developer. See the <color cyan>Report-a-bug Helper</color> button in the mod options menu to see details about how to get the game log.")}\nRaw data:",
                         scrollText = content,
                         buttons = new[]
                         {
@@ -182,7 +181,7 @@ namespace ElectricRoads.Data
 
 
                 byte[] data = instance.Instances[type]?.Serialize();
-                if (CommonProperties.DebugMode)
+                if (ModInstance.DebugMode)
                 {
                     string content = System.Text.Encoding.UTF8.GetString(data);
                     LogUtils.DoLog($"{type} DATA (L = {data?.Length}) =>  {content}");

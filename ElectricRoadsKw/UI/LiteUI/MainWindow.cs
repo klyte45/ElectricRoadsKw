@@ -1,7 +1,6 @@
 ﻿using ColossalFramework.UI;
 using ElectricRoads.Data;
-using Klyte.Localization;
-using Kwytto;
+using ElectricRoads.Localization;
 using Kwytto.LiteUI;
 using Kwytto.Utils;
 using System.Collections.Generic;
@@ -10,8 +9,13 @@ using UnityEngine;
 
 namespace ElectricRoads.UI
 {
-    internal class MainWindow : GUIRootWindowBase
+    internal class MainWindow : GUIOpacityChanging
     {
+        protected override bool showOverModals => false;
+
+        protected override bool requireModal => false;
+
+        protected override float FontSizeMultiplier => .9f;
         public static MainWindow Instance
         {
             get
@@ -32,7 +36,6 @@ namespace ElectricRoads.UI
 
         private void Init()
         {
-            requireModal = false;
             Init($"{ModInstance.Instance.Name} - Patch: {ModInstance.m_currentPatched}", new Rect(200, 200, 400, 550), true, true, new Vector2(400, 550));
 
             m_allClasses = ((FastList<PrefabCollection<NetInfo>.PrefabData>)typeof(PrefabCollection<NetInfo>).GetField("m_scenePrefabs", RedirectorUtils.allFlags).GetValue(null))
@@ -42,6 +45,7 @@ namespace ElectricRoads.UI
             .GroupBy(x => x.m_class.name)
             .OrderBy(x => x.Key)
             .ToDictionary(x => x.First().m_class, x => x.ToList());
+            Visible = false;
         }
 
         public void Start() => Visible = false;
@@ -52,18 +56,17 @@ namespace ElectricRoads.UI
         public static Color bgSubgroup;
         public static Color bgNote;
 
-        public static Texture2D BgTextureBasic => BgTexture;
 
         static MainWindow()
         {
-            bgSubgroup = CommonProperties.ModColor.SetBrightness(.20f);
+            bgSubgroup = ModInstance.Instance.ModColor.SetBrightness(.20f);
 
             BgTextureSubgroup = new Texture2D(1, 1);
             BgTextureSubgroup.SetPixel(0, 0, new Color(bgSubgroup.r, bgSubgroup.g, bgSubgroup.b, 1));
             BgTextureSubgroup.Apply();
 
 
-            bgNote = CommonProperties.ModColor.SetBrightness(.60f);
+            bgNote = ModInstance.Instance.ModColor.SetBrightness(.60f);
             BgTextureNote = new Texture2D(1, 1);
             BgTextureNote.SetPixel(0, 0, new Color(bgNote.r, bgNote.g, bgNote.b, 1));
             BgTextureNote.Apply();
@@ -73,7 +76,6 @@ namespace ElectricRoads.UI
         protected override void OnWindowClosed()
         {
             base.OnWindowClosed();
-            ModInstance.Instance.Close();
         }
 
 
@@ -89,12 +91,12 @@ namespace ElectricRoads.UI
                     {
                         normal = new GUIStyleState()
                         {
-                            background = GUIKlyteCommons.darkGreenTexture,
+                            background = GUIKwyttoCommons.darkGreenTexture,
                             textColor = Color.white
                         },
                         hover = new GUIStyleState()
                         {
-                            background = GUIKlyteCommons.greenTexture,
+                            background = GUIKwyttoCommons.greenTexture,
                             textColor = Color.black
                         },
                     };
@@ -115,12 +117,12 @@ namespace ElectricRoads.UI
                     {
                         normal = new GUIStyleState()
                         {
-                            background = GUIKlyteCommons.darkRedTexture,
+                            background = GUIKwyttoCommons.darkRedTexture,
                             textColor = Color.white
                         },
                         hover = new GUIStyleState()
                         {
-                            background = GUIKlyteCommons.redTexture,
+                            background = GUIKwyttoCommons.redTexture,
                             textColor = Color.white
                         },
                     };
@@ -154,77 +156,75 @@ namespace ElectricRoads.UI
             }
         }
 
+
         private List<VehicleInfo> m_currentInfoList;
         private VehicleInfo m_currentInfo;
 
-        private Texture2D texLoad = KResourceLoader.LoadTexture("UI.Images.Load.png");
-        private Texture2D texAll = KResourceLoader.LoadTexture("UI.Images.All.png");
-        private Texture2D texNone = KResourceLoader.LoadTexture("UI.Images.None.png");
-        private Texture2D texReload = KResourceLoader.LoadTexture("UI.Images.Reload.png");
-        private Texture2D texSave = KResourceLoader.LoadTexture("UI.Images.Save.png");
+        private Texture2D texLoad = KResourceLoader.LoadTextureMod("Load");
+        private Texture2D texAll = KResourceLoader.LoadTextureMod("All");
+        private Texture2D texNone = KResourceLoader.LoadTextureMod("None");
+        private Texture2D texReload = KResourceLoader.LoadTextureMod("Reload");
+        private Texture2D texSave = KResourceLoader.LoadTextureMod("Save");
 
-        protected override void DrawWindow()
+        protected override void DrawWindow(Vector2 area)
         {
-            var area = new Rect(5, 25, WindowRect.width - 10, WindowRect.height - 25);
-            using (new GUILayout.AreaScope(area))
+            var topArea = new Rect(0, 0, area.x, 42);
+            var bottomArea = new Rect(0, 42, area.x, 20);
+            var listArea = new Rect(0, 58, area.x, area.y - 62);
+            using (new GUILayout.AreaScope(topArea))
             {
-                var topArea = new Rect(0, 0, area.width, 42);
-                var bottomArea = new Rect(0, 42, area.width, 16);
-                var listArea = new Rect(0, 58, area.width, area.height - 58);
-                using (new GUILayout.AreaScope(topArea))
+                using (new GUILayout.HorizontalScope())
                 {
-                    using (new GUILayout.HorizontalScope())
+                    if (GUILayout.Button(new GUIContent(texSave, Str.ER_EXPORT_DEFAULT_BTN)))
                     {
-                        if (GUILayout.Button(new GUIContent(texSave, Str.ER_EXPORT_DEFAULT_BTN)))
-                        {
-                            ClassesData.Instance.SaveAsDefault();
-                        }
-                        GUILayout.FlexibleSpace();
-                        if (GUILayout.Button(new GUIContent(texLoad, Str.ER_IMPORT_DEFAULT_BTN)))
-                        {
-                            ClassesData.Instance.LoadDefaults(null);
-                        }
-                        GUILayout.FlexibleSpace();
-                        if (GUILayout.Button(new GUIContent(texAll, Str.ER_SELECT_ALL_BTN)))
-                        {
-                            ClassesData.Instance.SelectAll();
-                        }
-                        GUILayout.FlexibleSpace();
-                        if (GUILayout.Button(new GUIContent(texNone, Str.ER_SELECT_NONE_BTN)))
-                        {
-                            ClassesData.Instance.UnselectAll();
-                        }
-                        GUILayout.FlexibleSpace();
-                        if (GUILayout.Button(new GUIContent(texReload, Str.ER_RESET_BTN)))
-                        {
-                            ClassesData.Instance.SafeCleanAll(m_allClasses.Keys);
-                        }
+                        ClassesData.Instance.SaveAsDefault();
+                    }
+                    GUILayout.FlexibleSpace();
+                    if (GUILayout.Button(new GUIContent(texLoad, Str.ER_IMPORT_DEFAULT_BTN)))
+                    {
+                        ClassesData.Instance.LoadDefaults(null);
+                    }
+                    GUILayout.FlexibleSpace();
+                    if (GUILayout.Button(new GUIContent(texAll, Str.ER_SELECT_ALL_BTN)))
+                    {
+                        ClassesData.Instance.SelectAll();
+                    }
+                    GUILayout.FlexibleSpace();
+                    if (GUILayout.Button(new GUIContent(texNone, Str.ER_SELECT_NONE_BTN)))
+                    {
+                        ClassesData.Instance.UnselectAll();
+                    }
+                    GUILayout.FlexibleSpace();
+                    if (GUILayout.Button(new GUIContent(texReload, Str.ER_RESET_BTN)))
+                    {
+                        ClassesData.Instance.SafeCleanAll(m_allClasses.Keys);
                     }
                 }
-                using (new GUILayout.AreaScope(listArea))
+            }
+            using (new GUILayout.AreaScope(listArea))
+            {
+                using (var scroll = new GUILayout.ScrollViewScope(scrollPosition))
                 {
-                    using (var scroll = new GUILayout.ScrollViewScope(scrollPosition))
+                    using (new GUILayout.VerticalScope())
                     {
-                        using (new GUILayout.VerticalScope())
+                        foreach (var item in m_allClasses)
                         {
-                            foreach (var item in m_allClasses)
+                            using (new GUILayout.HorizontalScope())
                             {
-                                using (new GUILayout.HorizontalScope())
+                                var oldVal = ClassesData.Instance.GetConductibility(item.Key);
+                                var newVal = GUILayout.Toggle(oldVal, item.Key.name);
+                                if (oldVal != newVal)
                                 {
-                                    var oldVal = ClassesData.Instance.GetConductibility(item.Key);
-                                    var newVal = GUILayout.Toggle(oldVal, item.Key.name);
-                                    if (oldVal != newVal)
+                                    ClassesData.Instance.SetConductibility(item.Key, newVal);
+                                }
+                                GUILayout.FlexibleSpace();
+                                if (GUILayout.Button("?"))
+                                {
+                                    var clazz = item.Key;
+                                    KwyttoDialog.ShowModal(new KwyttoDialog.BindProperties()
                                     {
-                                        ClassesData.Instance.SetConductibility(item.Key, newVal);
-                                    }
-                                    GUILayout.FlexibleSpace();
-                                    if (GUILayout.Button("?"))
-                                    {
-                                        var clazz = item.Key;
-                                        KwyttoDialog.ShowModal(new KwyttoDialog.BindProperties()
-                                        {
-                                            showClose = true,
-                                            buttons = new[]{
+                                        showClose = true,
+                                        buttons = new[]{
                                                 KwyttoDialog.SpaceBtn,
                                                 new KwyttoDialog.ButtonDefinition{
                                                     title=Str.ER_ACTIVATE_CLASS_BTN,
@@ -247,24 +247,24 @@ namespace ElectricRoads.UI
                                                     onClick=()=>true
                                                 },
                                             },
-                                            title = string.Format(Str.ER_TITLE_NET_LIST_WINDOW, clazz.name),
-                                            message = string.Format(Str.ER_PATTERN_NET_LIST_TITLE, Mathf.Min(30, item.Value.Count), item.Value.Count),
-                                            scrollText = string.Join("\n", item.Value.Take(30).Select(x => $"\t- {x.GetUncheckedLocalizedTitle()}").ToArray()),
-                                        });
-                                    }
+                                        title = string.Format(Str.ER_TITLE_NET_LIST_WINDOW, clazz.name),
+                                        message = string.Format(Str.ER_PATTERN_NET_LIST_TITLE, Mathf.Min(30, item.Value.Count), item.Value.Count),
+                                        scrollText = string.Join("\n", item.Value.Take(30).Select(x => $"\t- {x.GetUncheckedLocalizedTitle()}").ToArray()),
+                                    });
                                 }
                             }
                         }
-                        scrollPosition = scroll.scrollPosition;
                     }
-                }
-                using (new GUILayout.AreaScope(bottomArea))
-                {
-                    GUILayout.Label(GUI.tooltip);
+                    scrollPosition = scroll.scrollPosition;
                 }
             }
-
+            using (new GUILayout.AreaScope(bottomArea))
+            {
+                GUILayout.Label(GUI.tooltip);
+            }
         }
+
+
 
         private Vector2 scrollPosition;
         private static MainWindow instance;

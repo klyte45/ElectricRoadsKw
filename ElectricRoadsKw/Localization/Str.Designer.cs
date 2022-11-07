@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Klyte.Localization {
+namespace ElectricRoads.Localization {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Klyte.Localization {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Klyte.Localization.Str", typeof(Str).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ElectricRoads.Localization.Str", typeof(Str).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

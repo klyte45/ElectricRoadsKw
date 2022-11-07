@@ -30,7 +30,7 @@ namespace ElectricRoads.Data
         public IDataExtension Deserialize(Type type, byte[] data)
         {
             string content = data[0] == '<' ? Encoding.UTF8.GetString(data) : ZipUtils.Unzip(data);
-            if (CommonProperties.DebugMode)
+            if (ModInstance.DebugMode)
             {
                 LogUtils.DoLog($"Deserializing {typeof(U)}:\n{content}");
             }
@@ -47,8 +47,8 @@ namespace ElectricRoads.Data
                 return null;
             }
             BeforeSerialize();
-            var xml = XmlUtils.DefaultXmlSerialize((U)this, CommonProperties.DebugMode);
-            if (CommonProperties.DebugMode)
+            var xml = XmlUtils.DefaultXmlSerialize((U)this, ModInstance.DebugMode);
+            if (ModInstance.DebugMode)
             {
                 LogUtils.DoLog($"Serializing  {typeof(U)}:\n{xml}");
             }
