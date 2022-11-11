@@ -3,6 +3,7 @@
 - New UI and new implementation
 - <color=#ff8800>Removed support to 81 tiles mod (while it's not fixed)</color>
 
-<color=yellow>NOTICE: This mod is incompatible with the "81 Tiles 2" mod</color>
+<color=yellow>NOTICE: This mod is incompatible with the "81 Tiles 2" mod. Compatibility mode on the way!</color>
 
 <color=green>r1 - 16/SEP/22</color>: Updated ja i18n.
+<color=green>r4 - 11/NOV/22</color>: Update for Road & Vehicles update.
