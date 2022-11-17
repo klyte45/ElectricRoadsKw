@@ -32,10 +32,6 @@ namespace ElectricRoads.Overrides
 
         private static readonly PowerLineAI defPLAI = new PowerLineAI();
 
-        public static List<Type> Get81TilesFakeManagerTypes() => Singleton<PluginManager>.instance.GetPluginsInfo().Where((PluginManager.PluginInfo pi) =>
-                                                                               pi.assemblyCount > 0
-                                                                               && pi.GetAssemblies().Where(x => "EightyOne" == x.GetName().Name).Where(x => x.GetType("EightyOne.ResourceManagers.FakeElectricityManager") != null).Count() > 0
-             ).SelectMany(pi => pi.GetAssemblies().Where(x => "EightyOne" == x.GetName().Name).Select(x => x.GetType("EightyOne.ResourceManagers.FakeElectricityManager"))).ToList();
 
         private static string lastAssemblyDebugString = "";
 
@@ -69,48 +65,127 @@ namespace ElectricRoads.Overrides
 
             ModInstance.m_currentPatched &= ~ModInstance.PatchFlags.BP81TilesGame;
             ModInstance.m_currentPatched &= ~ModInstance.PatchFlags.RegularGame;
+            ModInstance.m_currentPatched &= ~ModInstance.PatchFlags.Algernon81TilesGame;
 
 
             lastAssemblyDebugString = GenerateAssembliesDebugString();
 
-            LogUtils.DoWarnLog("Loading default hooks");
 
-            MethodInfo src = typeof(ElectricityManager).GetMethod("SimulationStepImpl", RedirectorUtils.allFlags);
-            MethodInfo trp = GetType().GetMethod("TranspileSimulation", RedirectorUtils.allFlags);
-            MethodInfo src2 = typeof(ElectricityManager).GetMethod("ConductToNode", RedirectorUtils.allFlags);
-            MethodInfo trp2 = GetType().GetMethod("TranspileConduction", RedirectorUtils.allFlags);
-            MethodInfo src4 = typeof(ElectricityManager).GetMethod("UpdateNodeElectricity", RedirectorUtils.allFlags);
-            MethodInfo pre4 = GetType().GetMethod("PreConduct", RedirectorUtils.allFlags);
-            MethodInfo pos4 = GetType().GetMethod("PostConduct", RedirectorUtils.allFlags);
-            LogUtils.DoLog($"TRANSPILE Electric ROADS NODES: {src} => {trp}");
-            AddRedirect(src, null, null, trp);
-            LogUtils.DoLog($"TRANSPILE Electric ROADS SEGMENTS: {src2} => {trp2}");
-            AddRedirect(src2, null, null, trp2);
-            LogUtils.DoLog($"TRANSPILE Electric ROADS SEGMENTS CHANGED: {src4} => {pre4} & {pos4}");
-            AddRedirect(src4, pre4, pos4);
+            MethodInfo checkElectricity81 = Type.GetType("EightyOne2.Patches.ExpandedElectricityManager", false)?.GetMethod("CheckElectricRoad", RedirectorUtils.allFlags);
+            if (checkElectricity81 != null)
+            {
+                MethodInfo preCheck = GetType().GetMethod("PreCheckElectricRoad", RedirectorUtils.allFlags);
+
+                MethodInfo electricity81getColor = Type.GetType("EightyOne2.Patches.ElectricRoadPatches", false)?.GetMethod("GetColor", RedirectorUtils.allFlags);
+                MethodInfo electricity81getColorNode = Type.GetType("EightyOne2.Patches.ElectricRoadPatches", false)?.GetMethod("GetColorNode", RedirectorUtils.allFlags);
+                MethodInfo preventDefault = GetType().GetMethod("PreventDefault", RedirectorUtils.allFlags);
+
+
+                MethodInfo electricity81UpdateNodeElectricity = Type.GetType("EightyOne2.Patches.ExpandedElectricityManager", false)?.GetMethod("UpdateNodeElectricity", RedirectorUtils.allFlags);
+                MethodInfo electricitySimulationStepImpl = Type.GetType("EightyOne2.Patches.ExpandedElectricityManager", false)?.GetMethod("SimulationStepImpl", RedirectorUtils.allFlags);
+                MethodInfo pre4 = GetType().GetMethod("PreConduct", RedirectorUtils.allFlags);
+                MethodInfo pos4 = GetType().GetMethod("PostConduct", RedirectorUtils.allFlags);
+
+                AddRedirect(checkElectricity81, preCheck);
+                AddRedirect(electricity81getColor, preventDefault);
+                AddRedirect(electricity81getColorNode, preventDefault);
+
+                AddRedirect(electricity81UpdateNodeElectricity, pre4, pos4, GetType().GetMethod("TranspileUpdateElectricity", RedirectorUtils.allFlags));
+                AddRedirect(electricitySimulationStepImpl, null, null, GetType().GetMethod("TranspileSimulationStepImpl", RedirectorUtils.allFlags));
+
+                ModInstance.m_currentPatched |= ModInstance.PatchFlags.Algernon81TilesGame;
+            }
+            else
+            {
+                LogUtils.DoWarnLog("Loading default hooks");
+
+                MethodInfo src = typeof(ElectricityManager).GetMethod("SimulationStepImpl", RedirectorUtils.allFlags);
+                MethodInfo trp = GetType().GetMethod("TranspileSimulation", RedirectorUtils.allFlags);
+                MethodInfo src2 = typeof(ElectricityManager).GetMethod("ConductToNode", RedirectorUtils.allFlags);
+                MethodInfo trp2 = GetType().GetMethod("TranspileConduction", RedirectorUtils.allFlags);
+                MethodInfo src4 = typeof(ElectricityManager).GetMethod("UpdateNodeElectricity", RedirectorUtils.allFlags);
+                MethodInfo pre4 = GetType().GetMethod("PreConduct", RedirectorUtils.allFlags);
+                MethodInfo pos4 = GetType().GetMethod("PostConduct", RedirectorUtils.allFlags);
+                LogUtils.DoLog($"TRANSPILE Electric ROADS NODES: {src} => {trp}");
+                AddRedirect(src, null, null, trp);
+                LogUtils.DoLog($"TRANSPILE Electric ROADS SEGMENTS: {src2} => {trp2}");
+                AddRedirect(src2, null, null, trp2);
+                LogUtils.DoLog($"TRANSPILE Electric ROADS SEGMENTS CHANGED: {src4} => {pre4} & {pos4}");
+                AddRedirect(src4, pre4, pos4);
+                GetHarmonyInstance();
+                ModInstance.m_currentPatched |= ModInstance.PatchFlags.RegularGame;
+            }
+
             GetHarmonyInstance();
-            ModInstance.m_currentPatched |= ModInstance.PatchFlags.RegularGame;
-
-            //List<Type> targetTypes = ElectricRoadsOverrides.Get81TilesFakeManagerTypes();
-
-            //foreach (Type fakeElMan in targetTypes)
-            //{
-            //    src = fakeElMan.GetMethod("SimulationStepImpl", RedirectorUtils.allFlags);
-            //    src2 = fakeElMan.GetMethod("ConductToNode", RedirectorUtils.allFlags);
-            //    src4 = fakeElMan.GetMethod("UpdateNodeElectricity", RedirectorUtils.allFlags);
-            //    LogUtils.DoLog($"TRANSPILE Electric ROADS NODES: {src} => {trp}");
-            //    AddRedirect(src, null, null, trp);
-            //    LogUtils.DoLog($"TRANSPILE Electric ROADS SEGMENTS: {src2} => {trp2}");
-            //    AddRedirect(src2, null, null, trp2);
-            //    LogUtils.DoLog($"TRANSPILE Electric ROADS SEGMENTS CHANGED: {src4} => {pre4} & {pos4}");
-            //    AddRedirect(src4, pre4, pos4);
-            //    ModInstance.m_currentPatched |= ModInstance.PatchFlags.Mod81TilesGame;
-            //}
-            GetHarmonyInstance();
-
-
-
         }
+
+        public static IEnumerable<CodeInstruction> TranspileUpdateElectricity(IEnumerable<CodeInstruction> instr)
+        {
+            bool transpiled = false;
+            var instrList = instr.ToList();
+            LogUtils.DoLog("Method Src:");
+            LogUtils.PrintMethodIL(instrList);
+            MethodInfo preCheck = typeof(ElectricRoadsOverrides).GetMethod("PreCheckElectricRoadDirect", RedirectorUtils.allFlags);
+            for (int i = 2; i < instrList.Count - 2; i++)
+            {
+                if (instrList[i].opcode == OpCodes.Stloc_S && instrList[i].operand is LocalBuilder lb && lb.LocalIndex == 5)
+                {
+                    instrList.RemoveAt(i - 1);
+                    instrList.InsertRange(i - 1, new[]
+                    {
+                        new CodeInstruction(OpCodes.Ldarg_S, 4),
+                        new CodeInstruction(OpCodes.Call, preCheck),
+                    });
+                    transpiled = true;
+                    break;
+                }
+            }
+            LogUtils.PrintMethodIL(instrList);
+            if (!transpiled)
+            {
+                throw new Exception("Transpilation failed!");
+            }
+            return instrList;
+        }
+        public static IEnumerable<CodeInstruction> TranspileSimulationStepImpl(IEnumerable<CodeInstruction> instr)
+        {
+            bool transpiled = false;
+            var instrList = instr.ToList();
+            LogUtils.DoLog("Method Src:");
+            LogUtils.PrintMethodIL(instrList);
+            for (int i = 2; i < instrList.Count - 2; i++)
+            {
+                if (instrList[i].opcode == OpCodes.Ldloc_S && instrList[i].operand is LocalBuilder lb && lb.LocalIndex == 18)
+                {
+                    var instrToMove = new[]
+                    {
+                        instrList[i],
+                        instrList[i+1]
+                    };
+                    instrList.RemoveAt(i + 1);
+                    instrList.RemoveAt(i);
+
+
+                    instrList.InsertRange(130, instrToMove);
+                    transpiled = true;
+
+                }
+            }
+            LogUtils.PrintMethodIL(instrList);
+            if (!transpiled)
+            {
+                throw new Exception("Transpilation failed!");
+            }
+            return instrList;
+        }
+
+
+        public static bool PreCheckElectricRoad(ref bool __result, NetInfo netInfo)
+        {
+            __result = PreCheckElectricRoadDirect(netInfo);
+            return false;
+        }
+        public static bool PreCheckElectricRoadDirect(NetInfo netInfo) => ClassesData.Instance.GetConductibility(netInfo.m_class);
 
         private static void RecheckMods()
         {
@@ -155,7 +230,7 @@ namespace ElectricRoads.Overrides
                 ref NetNode node = ref NetManager.instance.m_nodes.m_buffer[nodeID];
                 for (int i = 0; i < 8; i++)
                 {
-                    NetManager.instance.UpdateSegmentRenderer(node.GetSegment(i), true);
+                    ModInstance.Controller.AddSegmentToUpdateRendererQueue(node.GetSegment(i));
                 }
             }
         }

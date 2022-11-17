@@ -7,7 +7,7 @@ using System.Globalization;
 using System.Reflection;
 using UnityEngine;
 
-[assembly: AssemblyVersion("3.0.0.4")]
+[assembly: AssemblyVersion("3.0.1.0")]
 namespace ElectricRoads
 {
     public class ModInstance : BasicIUserMod<ModInstance, MainController>
@@ -20,7 +20,7 @@ namespace ElectricRoads
 
         protected override Dictionary<ulong, string> IncompatibleModList => new Dictionary<ulong, string>
         {
-            [2862121823] = "81 Tiles 2"
+    //        [2862121823] = "81 Tiles 2"
         };
 
         public override string SafeName => "ElectricRoads";
@@ -32,7 +32,9 @@ namespace ElectricRoads
         public enum PatchFlags
         {
             RegularGame = 0x1,
-            BP81TilesGame = 0x2
+            BP81TilesGame = 0x2,
+            Algernon81TilesGame = 0x4,
+            Regular_Algernon81TilesGame = 0x5
         }
         internal static PatchFlags m_currentPatched;
 
