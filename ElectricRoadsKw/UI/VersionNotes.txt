@@ -1,3 +1,6 @@
 <color=yellow>v3.0.1 - 17/NOV/22</color>
 - Added support to 81 Tiles 2 mod
 - Improved streets light on/off perfomance
+
+<color=green>Update r1 (18/NOV/22)</color>
+- Fixed UI scale in non-1080p based resolutions

@@ -7,7 +7,7 @@ using System.Globalization;
 using System.Reflection;
 using UnityEngine;
 
-[assembly: AssemblyVersion("3.0.1.0")]
+[assembly: AssemblyVersion("3.0.1.1")]
 namespace ElectricRoads
 {
     public class ModInstance : BasicIUserMod<ModInstance, MainController>
