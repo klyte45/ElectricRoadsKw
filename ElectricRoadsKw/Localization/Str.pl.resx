@@ -118,31 +118,31 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="root_modDescription" xml:space="preserve">
-    <value>Enable/disable electricity passing through networks.</value>
+    <value>Włącz/wyłącz przepływ energii elektrycznej przez sieci.</value>
   </data>
   <data name="ER_ACTIVATE_CLASS_BTN" xml:space="preserve">
-    <value>Activate Electricity</value>
+    <value>Aktywuj elektryczność</value>
   </data>
   <data name="ER_DEACTIVATE_CLASS_BTN" xml:space="preserve">
-    <value>Deactivate Electricity</value>
+    <value>Deaktywuj elektryczność</value>
   </data>
   <data name="ER_RETURN_BTN" xml:space="preserve">
-    <value>Do nothing</value>
+    <value>Nie rób nic</value>
   </data>
   <data name="ER_TITLE_NET_LIST_WINDOW" xml:space="preserve">
-    <value>Assets of class: {0}</value>
+    <value>Zasoby klasy: {0}</value>
   </data>
   <data name="ER_PATTERN_NET_LIST_TITLE" xml:space="preserve">
     <value>This is the list of assets in this class: (Showing {0}/{1})</value>
   </data>
   <data name="ER_EXPORT_DEFAULT_BTN" xml:space="preserve">
-    <value>Export as Default</value>
+    <value>Wyeksportuj jako domyślne</value>
   </data>
   <data name="ER_IMPORT_DEFAULT_BTN" xml:space="preserve">
-    <value>Import Defaults</value>
+    <value>Importuj domyślne</value>
   </data>
   <data name="ER_SELECT_ALL_BTN" xml:space="preserve">
-    <value>Select All</value>
+    <value>Zaznacz wszystko</value>
   </data>
   <data name="ER_SELECT_NONE_BTN" xml:space="preserve">
     <value>Select None</value>
