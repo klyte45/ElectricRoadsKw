@@ -18,14 +18,14 @@ namespace ElectricRoads.Overrides
 
         public Redirector RedirectorInstance => this;
 
-        private delegate Color GetColorNodePLAIDelegate(PowerLineAI obj, ushort nodeID, ref NetNode data, InfoManager.InfoMode infoMode);
-        private delegate Color GetColorSegmentPLAIDelegate(PowerLineAI obj, ushort segmentID, ref NetSegment data, InfoManager.InfoMode infoMode);
+        private delegate Color GetColorNodePLAIDelegate(PowerLineAI obj, ushort nodeID, ref NetNode data, InfoManager.InfoMode infoMode, InfoManager.SubInfoMode subInfoMode);
+        private delegate Color GetColorSegmentPLAIDelegate(PowerLineAI obj, ushort segmentID, ref NetSegment data, InfoManager.InfoMode infoMode, InfoManager.SubInfoMode subInfoMode);
 
-        private static readonly MethodInfo origMethodColorNode = typeof(PowerLineAI).GetMethod("GetColor", new Type[] { typeof(ushort), typeof(NetNode).MakeByRefType(), typeof(InfoManager.InfoMode) });
-        private static readonly MethodInfo origMethodColorSegment = typeof(PowerLineAI).GetMethod("GetColor", new Type[] { typeof(ushort), typeof(NetSegment).MakeByRefType(), typeof(InfoManager.InfoMode) });
+        private static readonly MethodInfo origMethodColorNode = typeof(PowerLineAI).GetMethod("GetColor", new Type[] { typeof(ushort), typeof(NetNode).MakeByRefType(), typeof(InfoManager.InfoMode), typeof(InfoManager.SubInfoMode) });
+        private static readonly MethodInfo origMethodColorSegment = typeof(PowerLineAI).GetMethod("GetColor", new Type[] { typeof(ushort), typeof(NetSegment).MakeByRefType(), typeof(InfoManager.InfoMode), typeof(InfoManager.SubInfoMode) });
 
-        private static readonly MethodInfo origMethodColorNodeRoadBase = typeof(NetAI).GetMethod("GetColor", new Type[] { typeof(ushort), typeof(NetNode).MakeByRefType(), typeof(InfoManager.InfoMode) });
-        private static readonly MethodInfo origMethodColorSegmentRoadBase = typeof(NetAI).GetMethod("GetColor", new Type[] { typeof(ushort), typeof(NetSegment).MakeByRefType(), typeof(InfoManager.InfoMode) });
+        private static readonly MethodInfo origMethodColorNodeRoadBase = typeof(NetAI).GetMethod("GetColor", new Type[] { typeof(ushort), typeof(NetNode).MakeByRefType(), typeof(InfoManager.InfoMode), typeof(InfoManager.SubInfoMode) });
+        private static readonly MethodInfo origMethodColorSegmentRoadBase = typeof(NetAI).GetMethod("GetColor", new Type[] { typeof(ushort), typeof(NetSegment).MakeByRefType(), typeof(InfoManager.InfoMode), typeof(InfoManager.SubInfoMode) });
 
         private static readonly GetColorNodePLAIDelegate GetColorNodePLAI = (GetColorNodePLAIDelegate)ReflectionUtils.GetMethodDelegate(origMethodColorNode, typeof(GetColorNodePLAIDelegate));
         private static readonly GetColorSegmentPLAIDelegate GetColorSegmentPLAI = (GetColorSegmentPLAIDelegate)ReflectionUtils.GetMethodDelegate(origMethodColorSegment, typeof(GetColorSegmentPLAIDelegate));
@@ -194,18 +194,18 @@ namespace ElectricRoads.Overrides
             PluginManager.instance.eventPluginsStateChanged -= RecheckMods;
         }
 
-        private static void AfterGetColorNode(ref Color __result, ushort nodeID, ref NetNode data, InfoManager.InfoMode infoMode)
+        private static void AfterGetColorNode(ref Color __result, ushort nodeID, ref NetNode data, InfoManager.InfoMode infoMode, InfoManager.SubInfoMode subInfoMode)
         {
             if (infoMode == InfoManager.InfoMode.Electricity)
             {
-                __result = GetColorNodePLAI(defPLAI, nodeID, ref data, infoMode);
+                __result = GetColorNodePLAI(defPLAI, nodeID, ref data, infoMode, subInfoMode);
             }
         }
-        private static void AfterGetColorSegment(ref Color __result, ushort segmentID, ref NetSegment data, InfoManager.InfoMode infoMode)
+        private static void AfterGetColorSegment(ref Color __result, ushort segmentID, ref NetSegment data, InfoManager.InfoMode infoMode, InfoManager.SubInfoMode subInfoMode)
         {
             if (infoMode == InfoManager.InfoMode.Electricity)
             {
-                __result = GetColorSegmentPLAI(defPLAI, segmentID, ref data, infoMode);
+                __result = GetColorSegmentPLAI(defPLAI, segmentID, ref data, infoMode, subInfoMode);
             }
         }
 

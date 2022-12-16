@@ -7,7 +7,7 @@ using System.Globalization;
 using System.Reflection;
 using UnityEngine;
 
-[assembly: AssemblyVersion("3.0.1.1")]
+[assembly: AssemblyVersion("3.0.1.2")]
 namespace ElectricRoads
 {
     public class ModInstance : BasicIUserMod<ModInstance, MainController>
@@ -20,7 +20,6 @@ namespace ElectricRoads
 
         protected override Dictionary<ulong, string> IncompatibleModList => new Dictionary<ulong, string>
         {
-    //        [2862121823] = "81 Tiles 2"
         };
 
         public override string SafeName => "ElectricRoads";
