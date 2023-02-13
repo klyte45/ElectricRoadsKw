@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="root_modDescription" xml:space="preserve">
-    <value>Включение/выключение передачи электричества автодорогами.</value>
+    <value>Включить/выключить передачу электроэнергии через сети.</value>
   </data>
   <data name="ER_ACTIVATE_CLASS_BTN" xml:space="preserve">
-    <value>Включить электропередачу</value>
+    <value>Отключить электропередачу</value>
   </data>
   <data name="ER_DEACTIVATE_CLASS_BTN" xml:space="preserve">
     <value>Отключить электропередачу</value>
