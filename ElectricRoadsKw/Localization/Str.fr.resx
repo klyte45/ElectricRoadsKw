@@ -133,10 +133,10 @@
     <value>Asset de classe : {0}</value>
   </data>
   <data name="ER_PATTERN_NET_LIST_TITLE" xml:space="preserve">
-    <value>Ceci est la liste des assets de cette classe : (Monter {0}/{1})</value>
+    <value>Voici la liste des assets de cette classe : (Monter {0}/{1})</value>
   </data>
   <data name="ER_EXPORT_DEFAULT_BTN" xml:space="preserve">
-    <value>Exporteer les valeurs par défauts</value>
+    <value>Exporter les valeurs par défauts</value>
   </data>
   <data name="ER_IMPORT_DEFAULT_BTN" xml:space="preserve">
     <value>Importer les valeurs par défauts</value>
