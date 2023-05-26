@@ -118,58 +118,58 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="root_modDescription" xml:space="preserve">
-    <value>Enable/disable electricity passing through networks.</value>
+    <value>Aktiviere/deaktiviere, dass der Strom durch Netzwerke geleitet wird.</value>
   </data>
   <data name="ER_ACTIVATE_CLASS_BTN" xml:space="preserve">
-    <value>Activate Electricity</value>
+    <value>Strom aktivieren</value>
   </data>
   <data name="ER_DEACTIVATE_CLASS_BTN" xml:space="preserve">
-    <value>Deactivate Electricity</value>
+    <value>Strom deaktivieren</value>
   </data>
   <data name="ER_RETURN_BTN" xml:space="preserve">
-    <value>Do nothing</value>
+    <value>Nichts unternehmen</value>
   </data>
   <data name="ER_TITLE_NET_LIST_WINDOW" xml:space="preserve">
-    <value>Assets of class: {0}</value>
+    <value>Assets der Klasse: {0}</value>
   </data>
   <data name="ER_PATTERN_NET_LIST_TITLE" xml:space="preserve">
-    <value>This is the list of assets in this class: (Showing {0}/{1})</value>
+    <value>Dies ist die Liste der Assets in dieser Klasse: (Zeigt {0}/{1})</value>
   </data>
   <data name="ER_EXPORT_DEFAULT_BTN" xml:space="preserve">
-    <value>Export as Default</value>
+    <value>Als Standard exportieren</value>
   </data>
   <data name="ER_IMPORT_DEFAULT_BTN" xml:space="preserve">
-    <value>Import Defaults</value>
+    <value>Importiert Standardwerte</value>
   </data>
   <data name="ER_SELECT_ALL_BTN" xml:space="preserve">
-    <value>Select All</value>
+    <value>Alles Auswählen</value>
   </data>
   <data name="ER_SELECT_NONE_BTN" xml:space="preserve">
-    <value>Select None</value>
+    <value>Nichts auswählen</value>
   </data>
   <data name="ER_RESET_BTN" xml:space="preserve">
-    <value>Use mod defaults</value>
+    <value>Mod-Standardwerte verwenden</value>
   </data>
   <data name="ER_ERROR_LOADING_DEFAULTS_TITLE" xml:space="preserve">
-    <value>Error loading defaults</value>
+    <value>Fehler beim Laden der Standardwerte</value>
   </data>
   <data name="ER_ERROR_LOADING_DEFAULTS_MESSAGE" xml:space="preserve">
-    <value>The file with default configurations (at &lt;color=#FFFF00&gt;{0}&lt;/color&gt;) seems to be corrupted. This error was thrown while trying to load it:
+    <value>Die Datei mit Standardkonfigurationen ( &lt;color=#FFFF00&gt;{0}&lt;/color&gt;) scheint beschädigt zu sein. Dieser Fehler wurde beim Laden angegeben:
 
 &lt;color=#FF0000&gt;{1} - {2}\n\n{3}&lt;/color&gt;
 
-If you think this is a mod problem, please take a print of this window and post it at mod page.</value>
+Wenn du denkst, dass dies ein Mod-Problem ist, mache bitte einen Screenshot und poste diesen auf der Mod-Seite.</value>
   </data>
   <data name="ER_OK_BUTTON" xml:space="preserve">
     <value>Okay...</value>
   </data>
   <data name="ER_OPEN_FOLDER_ON_EXPLORER_BUTTON" xml:space="preserve">
-    <value>Open folder in explorer</value>
+    <value>Ordner im Explorer öffnen</value>
   </data>
   <data name="ER_GO_TO_MOD_PAGE_BUTTON" xml:space="preserve">
-    <value>Go to mod page at Workshop</value>
+    <value>Zur Mod-Seite im Workshop gehen</value>
   </data>
   <data name="ER_COPY_TO_CLIPBOARD" xml:space="preserve">
-    <value>Copy content to Clipboard</value>
+    <value>Inhalt in Zwischenablage kopieren</value>
   </data>
 </root>
