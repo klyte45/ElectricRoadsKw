@@ -161,7 +161,7 @@
 Если вы считаете, что это проблема мода, сделайте распечатку этого окна и разместите её на странице мода.</value>
   </data>
   <data name="ER_OK_BUTTON" xml:space="preserve">
-    <value>Хорошо...</value>
+    <value>Окей...</value>
   </data>
   <data name="ER_OPEN_FOLDER_ON_EXPLORER_BUTTON" xml:space="preserve">
     <value>Открыть папку в Проводнике</value>
