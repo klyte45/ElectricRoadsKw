@@ -151,7 +151,7 @@
     <value>Utiliser les paramètres par défaut du mod</value>
   </data>
   <data name="ER_ERROR_LOADING_DEFAULTS_TITLE" xml:space="preserve">
-    <value>Erreur de chargment des paramètres</value>
+    <value>Erreur de chargement des paramètres</value>
   </data>
   <data name="ER_ERROR_LOADING_DEFAULTS_MESSAGE" xml:space="preserve">
     <value>Le fichier avec les configurations par défaut (à &lt;color=#FFFF00&gt;{0}&lt;/color&gt;) semble être corrompu. Cette erreur a été lancée en essayant de le charger :
@@ -170,6 +170,6 @@ Si vous pensez qu'il s'agit d'un problème de mod, prenez une capture d'écran d
     <value>Aller au WorkShop du mod</value>
   </data>
   <data name="ER_COPY_TO_CLIPBOARD" xml:space="preserve">
-    <value>Copier le contenu dans le presse papier</value>
+    <value>Copier le contenu dans le presse-papier</value>
   </data>
 </root>
