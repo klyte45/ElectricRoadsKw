@@ -95,14 +95,7 @@
     <EmbeddedResource Include="_commons\UI\Images\*.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="UI\Images\ModIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="UI\Images\Load.png" />
-    <EmbeddedResource Include="UI\Images\None.png" />
-    <EmbeddedResource Include="UI\Images\All.png" />
-    <EmbeddedResource Include="UI\Images\Reload.png" />
-    <EmbeddedResource Include="UI\Images\Save.png" />
+    <EmbeddedResource Include="UI\Images\*.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KwyttoUtilityER\KwyttoUtilityER.csproj">

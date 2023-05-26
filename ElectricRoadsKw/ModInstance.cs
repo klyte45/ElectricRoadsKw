@@ -7,7 +7,7 @@ using System.Globalization;
 using System.Reflection;
 using UnityEngine;
 
-[assembly: AssemblyVersion("2023.0.0.*")]
+[assembly: AssemblyVersion("2023.0.0.0")]
 namespace ElectricRoads
 {
     public class ModInstance : BasicIUserMod<ModInstance, MainController>
@@ -43,7 +43,7 @@ namespace ElectricRoads
             new UUIWindowButtonContainerPlaceholder(
                 buttonName: Instance.SimpleName,
                 tooltip: Instance.GeneralName,
-                iconPath: "ModIcon",
+                iconPath: "ModIcon_NoBg",
                 windowGetter: ()=>MainWindow.Instance
              )
         });

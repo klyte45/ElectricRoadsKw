@@ -1,10 +1,14 @@
-<color=green>Update r2 (17/DEC/22)</color>
+<color=green>FINAL UPDATE (26/MAY/23)</color>
+- New UI skin
+- New UUI button
 - Fixed support to 81 Tiles 2 mod
-- Financial Districts update compatible
+- Fixed default support
+- Fixed error on first using mod in a city
+- Added translations to: de, es, fr, pl, ru, th, cs, zh, ja (some of them partially)
 
-<color=green>Update r1 (18/NOV/22)</color>
-- Fixed UI scale in non-1080p based resolutions
+<color=yellow>NOTICE:</color> 
+This mod may still have issues due lacking to test it deeply - specially, was lightly tested along other mods, so may have unmapped incompatibilities.
 
-<color=yellow>v3.0.1 - 17/NOV/22</color>
-- Added support to 81 Tiles 2 mod
-- Improved streets light on/off perfomance
+I'll be watching the comments regularly to make small fixes until August/2023.
+
+If you are getting this mod after this date and reading this, so it means the mod is stable already and you may ignore this notice. 
