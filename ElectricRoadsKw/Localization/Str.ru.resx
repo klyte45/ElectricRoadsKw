@@ -121,13 +121,13 @@
     <value>Включить/выключить передачу электроэнергии через сети.</value>
   </data>
   <data name="ER_ACTIVATE_CLASS_BTN" xml:space="preserve">
-    <value>Отключить электропередачу</value>
+    <value>Включить электропередачу</value>
   </data>
   <data name="ER_DEACTIVATE_CLASS_BTN" xml:space="preserve">
     <value>Отключить электропередачу</value>
   </data>
   <data name="ER_RETURN_BTN" xml:space="preserve">
-    <value>Ничего не делать</value>
+    <value>Ничего не делай</value>
   </data>
   <data name="ER_TITLE_NET_LIST_WINDOW" xml:space="preserve">
     <value>Объекты класса: {0}</value>
@@ -139,7 +139,7 @@
     <value>Экспорт по умолчанию</value>
   </data>
   <data name="ER_IMPORT_DEFAULT_BTN" xml:space="preserve">
-    <value>Импорт по умолчанию</value>
+    <value>Импорт шаблонов</value>
   </data>
   <data name="ER_SELECT_ALL_BTN" xml:space="preserve">
     <value>Выбрать все</value>
