@@ -79,10 +79,7 @@
       <DependentUpon>Str.resx</DependentUpon>
     </Compile>
     <Compile Include="Data\ClassesData.cs" />
-    <Compile Include="Data\DataContainer.cs" />
-    <Compile Include="Data\DataExtensionBase.cs" />
     <Compile Include="Data\ExtensionInterfaceDictionaryStructValSimplImpl.cs" />
-    <Compile Include="Data\IDataExtension.cs" />
     <Compile Include="MainController.cs" />
     <Compile Include="ModInstance.cs" />
     <Compile Include="Overrides\ElectricRoadsOverrides.cs" />

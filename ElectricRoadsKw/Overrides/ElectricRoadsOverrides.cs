@@ -70,30 +70,33 @@ namespace ElectricRoads.Overrides
 
             lastAssemblyDebugString = GenerateAssembliesDebugString();
 
-
-            MethodInfo checkElectricity81 = Type.GetType("EightyOne2.Patches.ExpandedElectricityManager", false)?.GetMethod("CheckElectricRoad", RedirectorUtils.allFlags);
-            if (checkElectricity81 != null)
+            var type81 = Type.GetType("EightyOne2.Patches.ExpandedElectricityManager, EightyOne2", false);
+            if (type81 != null && (PluginManager.instance.GetPluginsInfo().FirstOrDefault(x => x.ContainsAssembly(type81.Assembly))?.isEnabled ?? false))
             {
-                MethodInfo preCheck = GetType().GetMethod("PreCheckElectricRoad", RedirectorUtils.allFlags);
+                MethodInfo checkElectricity81 = type81.GetMethod("CheckElectricRoad", RedirectorUtils.allFlags);
+                if (checkElectricity81 != null)
+                {
+                    MethodInfo preCheck = GetType().GetMethod("PreCheckElectricRoad", RedirectorUtils.allFlags);
 
-                MethodInfo electricity81getColor = Type.GetType("EightyOne2.Patches.ElectricRoadPatches", false)?.GetMethod("GetColor", RedirectorUtils.allFlags);
-                MethodInfo electricity81getColorNode = Type.GetType("EightyOne2.Patches.ElectricRoadPatches", false)?.GetMethod("GetColorNode", RedirectorUtils.allFlags);
-                MethodInfo preventDefault = GetType().GetMethod("PreventDefault", RedirectorUtils.allFlags);
+                    MethodInfo electricity81getColor = Type.GetType("EightyOne2.Patches.ElectricRoadPatches, EightyOne2", false)?.GetMethod("GetColor", RedirectorUtils.allFlags);
+                    MethodInfo electricity81getColorNode = Type.GetType("EightyOne2.Patches.ElectricRoadPatches, EightyOne2", false)?.GetMethod("GetColorNode", RedirectorUtils.allFlags);
+                    MethodInfo preventDefault = GetType().GetMethod("PreventDefault", RedirectorUtils.allFlags);
 
 
-                MethodInfo electricity81UpdateNodeElectricity = Type.GetType("EightyOne2.Patches.ExpandedElectricityManager", false)?.GetMethod("UpdateNodeElectricity", RedirectorUtils.allFlags);
-                MethodInfo electricitySimulationStepImpl = Type.GetType("EightyOne2.Patches.ExpandedElectricityManager", false)?.GetMethod("SimulationStepImpl", RedirectorUtils.allFlags);
-                MethodInfo pre4 = GetType().GetMethod("PreConduct", RedirectorUtils.allFlags);
-                MethodInfo pos4 = GetType().GetMethod("PostConduct", RedirectorUtils.allFlags);
+                    MethodInfo electricity81UpdateNodeElectricity = Type.GetType("EightyOne2.Patches.ExpandedElectricityManager, EightyOne2", false)?.GetMethod("UpdateNodeElectricity", RedirectorUtils.allFlags);
+                    MethodInfo electricitySimulationStepImpl = Type.GetType("EightyOne2.Patches.ExpandedElectricityManager, EightyOne2", false)?.GetMethod("SimulationStepImpl", RedirectorUtils.allFlags);
+                    MethodInfo pre4 = GetType().GetMethod("PreConduct", RedirectorUtils.allFlags);
+                    MethodInfo pos4 = GetType().GetMethod("PostConduct", RedirectorUtils.allFlags);
 
-                AddRedirect(checkElectricity81, preCheck);
-                AddRedirect(electricity81getColor, preventDefault);
-                AddRedirect(electricity81getColorNode, preventDefault);
+                    AddRedirect(checkElectricity81, preCheck);
+                    AddRedirect(electricity81getColor, preventDefault);
+                    AddRedirect(electricity81getColorNode, preventDefault);
 
-                AddRedirect(electricity81UpdateNodeElectricity, pre4, pos4, GetType().GetMethod("TranspileUpdateElectricity", RedirectorUtils.allFlags));
-                AddRedirect(electricitySimulationStepImpl, null, null, GetType().GetMethod("TranspileSimulationStepImpl", RedirectorUtils.allFlags));
+                    AddRedirect(electricity81UpdateNodeElectricity, pre4, pos4, GetType().GetMethod("TranspileUpdateElectricity", RedirectorUtils.allFlags));
+                    AddRedirect(electricitySimulationStepImpl, null, null, GetType().GetMethod("TranspileSimulationStepImpl", RedirectorUtils.allFlags));
 
-                ModInstance.m_currentPatched |= ModInstance.PatchFlags.Algernon81TilesGame;
+                    ModInstance.m_currentPatched |= ModInstance.PatchFlags.Algernon81TilesGame;
+                }
             }
             else
             {

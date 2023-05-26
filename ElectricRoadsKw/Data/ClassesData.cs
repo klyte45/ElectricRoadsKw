@@ -12,7 +12,7 @@ namespace ElectricRoads.Data
 {
     public class ClassesData : ExtensionInterfaceDictionaryStructValSimplImpl<ClassesData, string, bool>
     {
-        public override void LoadDefaults(ISerializableData serializableData)
+        public override ClassesData LoadDefaults(ISerializableData serializableData)
         {
             if (File.Exists(MainController.DEFAULT_CONFIG_FILE))
             {
@@ -74,6 +74,7 @@ namespace ElectricRoads.Data
 
                 }
             }
+            return this;
         }
 
         public void SaveAsDefault() => File.WriteAllBytes(MainController.DEFAULT_CONFIG_FILE, Serialize());
