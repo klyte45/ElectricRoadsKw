@@ -154,14 +154,14 @@
     <value>Błąd wczytywania domyślnych ustawień</value>
   </data>
   <data name="ER_ERROR_LOADING_DEFAULTS_MESSAGE" xml:space="preserve">
-    <value>The file with default configurations (at &lt;color=#FFFF00&gt;{0}&lt;/color&gt;) seems to be corrupted. This error was thrown while trying to load it:
+    <value>Plik z domyślną konfiguracją (&lt;color=#FFFF00&gt;{0}&lt;/color&gt;) wydaje się uszkodzony. Ten błąd został znaleziony podczas ładowania:
 
 &lt;color=#FF0000&gt;{1} - {2}\n\n{3}&lt;/color&gt;
 
-If you think this is a mod problem, please take a print of this window and post it at mod page.</value>
+Jeżeli myślisz, że jest to błąd mod, zrób zrzut ekranu tego błędu i pokaż go na stronie moda.</value>
   </data>
   <data name="ER_OK_BUTTON" xml:space="preserve">
-    <value>Okay...</value>
+    <value>W porządku...</value>
   </data>
   <data name="ER_OPEN_FOLDER_ON_EXPLORER_BUTTON" xml:space="preserve">
     <value>Otwórz folder w eksploratorze</value>
